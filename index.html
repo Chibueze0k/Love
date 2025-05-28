@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Love massage </title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Do You Love Me?</title>
+
+    <style>
+
+        body {
+
+            background-color: #ffefef;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            height: 100vh;
+
+            margin: 0;
+
+            flex-direction: column;
+
+            font-family: 'Comic Sans MS', sans-serif;
+
+            overflow: hidden;
+
+        }
+
+        .container {
+
+            text-align: center;
+
+        }
+
+        #loveQuestion {
+
+            margin: 20px;
+
+            font-size: 30px;
+
+            color: #ff6b6b;
+
+            text-shadow: 2px 2px 5px #ff4757;
+
+        }
+
+        #yesBtn, #noBtn {
+
+            padding: 15px 25px;
+
+            margin: 10px;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            border-radius: 10px;
+
+            border: none;
+
+            background-color: #ff4757;
+
+            color: white;
+
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+
+            transition: transform 0.2s;
+
+        }
+
+        #noBtn {
+
+            position: absolute;
+
+            transition: all 0.5s ease;
+
+        }
+
+        #yesBtn:hover {
+
+            transform: scale(1.1);
+
+            background-color: #ff6b6b;
+
+        }
+
+        .hidden {
+
+            display: none;
+
+        }
+
+        /* Love animation */
+
+        .love-animation {
+
+            font-size: 50px;
+
+            color: red;
+
+            animation: pulse 1s infinite;
+
+        }
+
+        @keyframes pulse {
+
+            0% { transform: scale(1); }
+
+            50% { transform: scale(1.2); }
+
+            100% { transform: scale(1); }
+
+        }
+
+        /* Typing effect */
+
+        @keyframes typing {
+
+            from { width: 0; }
+
+            to { width: 100%; }
+
+        }
+
+        #liveText {
+
+            font-size: 24px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            border-right: 3px solid;
+
+            width: 0;
+
+            animation: typing 4s steps(30) forwards;
+
+            color: #ff4757;
+
+            margin-bottom: 20px;
+
+        }
+
+        #messageBox {
+
+            color: #333;
+
+            font-size: 18px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="preloader" class="container">
+
+        <h2 id="liveText">built by De Greatness </h2>
+
+    </div>
+
+    <div id="loveSection" class="container hidden">
+
+        <h1 id="loveQuestion">Do you love me?</h1>
+
+        <button id="yesBtn">Yes</button>
+
+        <button id="noBtn">No</button>
+
+        <p id="messageBox" class="hidden"></p>
+
+    </div>
+
+    <h1 id="response" class="hidden">I love you too 💕</h1>
+
+    <script>
+
+        let noClickCount = 0;
+
+        // Show typing effect before showing the main content
+
+        setTimeout(() => {
+
+            document.getElementById("preloader").classList.add("hidden");
+
+            document.getElementById("loveSection").classList.remove("hidden");
+
+        }, 5000); // Wait for the typing effect to finish
+
+        const yesBtn = document.getElementById("yesBtn");
+
+        const noBtn = document.getElementById("noBtn");
+
+        const loveQuestion = document.getElementById("loveQuestion");
+
+        const response = document.getElementById("response");
+
+        const messageBox = document.getElementById("messageBox");
+
+        // Move the 'No' button around randomly on the screen
+
+        noBtn.addEventListener("mouseover", () => {
+
+            moveNoButton();
+
+        });
+
+        noBtn.addEventListener("click", () => {
+
+            noClickCount++;
+
+            moveNoButton();
+
+            if (noClickCount === 3) {
+
+                messageBox.textContent = "Click yes because you know you love me 😁 na you go tire";
+
+                messageBox.classList.remove("hidden");
+
+            }
+
+        });
+
+        // Move the no button to random places on click or hover
+
+        function moveNoButton() {
+
+            const randomX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+
+            const randomY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+            noBtn.style.left = randomX + "px";
+
+            noBtn.style.top = randomY + "px";
+
+        }
+
+        // When 'Yes' is clicked
+
+        yesBtn.addEventListener("click", () => {
+
+            loveQuestion.classList.add("hidden");
+
+            yesBtn.classList.add("hidden");
+
+            noBtn.classList.add("hidden");
+
+            messageBox.classList.add("hidden");
+
+            response.classList.remove("hidden");
+
+            response.classList.add("love-animation");
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+<!-- partial -->
+  
+</body>
+</html>
